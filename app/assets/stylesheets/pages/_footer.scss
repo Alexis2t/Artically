@@ -1,0 +1,15 @@
+.footer-div {
+  height: 180px;
+  width: 100%;
+  background-color: $lightgray;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-brands {
+  font-size: 28px;
+  margin: 10px;
+}

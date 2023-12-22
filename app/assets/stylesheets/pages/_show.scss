@@ -1,0 +1,91 @@
+.post-container {
+  display: flex;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.post-sections-container {
+  padding: 5% 5% 5% 5%;
+  width: 58%;
+  overflow: hidden;
+  background-color: $orangepastel;
+}
+
+.post-section-content {
+  margin-top: 30px;
+}
+
+.post-main-picture {
+  width: 42%;
+  height: 100vh;
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+}
+
+.author-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.author-profile-name {
+  font-family: "Amarante";
+  font-size: 24px;
+}
+
+.author-profile-summary {
+  font-family: "Abel";
+  font-size: 20px;
+  text-align: justify;
+}
+
+.post-content-tab {
+  text-align: justify;
+}
+
+.post-citation {
+  font-size: 24px;
+  font-family: "Artifika";
+}
+
+.post-content {
+  font-size: 22px;
+  font-family: "Abel";
+}
+
+.post-details {
+  color: $lightgray;
+  font-family: "Abel";
+  font-size: 18px;
+}
+
+.post-title {
+  font-family: "Anton"
+}
+
+@media screen and (max-width: 720px) {
+  .post-sections-container {
+    width: 100%;
+  }
+}
+
+.return-btn {
+  position: absolute;
+  top: auto;
+  left: 20px;
+  font-size: 50px;
+  z-index: 2;
+}
+
+.return-btn:hover {
+  color: white;
+  transition-duration: 0.5s;
+  transition: ease-in-out;
+}

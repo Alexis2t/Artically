@@ -1,0 +1,43 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky">
+  <div class="container-fluid">
+    <% unless @return_btn %>
+      <%= link_to posts_path, class: "navbar-brand" do %>
+        <h1 class="logo" style="color: <%= @logo_black ? "\"black\"" : "#F8EAD9" %>;">Artically</h1>
+      <% end %>
+    <% else %>
+      <div></div>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item navbar-item">
+          <%= link_to "Articles", posts_path, class:"nav-link" %>
+        </li>
+
+        <li class="nav-item dropdown navbar-item">
+          <% if user_signed_in? %>
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag(current_user.photo.key, class:"avatar dropdown-toggle", data: { bs_toggle:"dropdown" }) %>
+            <% else %>
+              <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/6596/6596121.png" />
+            <% end %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Log out", destroy_user_session_path, data: { turbo_method:"delete" }, class:"dropdown-item" %>
+            </div>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Se connecter", new_user_session_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "S'inscrire", new_user_registration_path, class:"nav-link" %>
+            </li>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

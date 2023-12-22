@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="posts-container">
+    <% @posts.each do |post| %>
+      <div class="post-card">
+        <%= link_to post_path(post), class:"" do %>
+          <div class="post-card-picture" style="background-image:url('<%= image_url('default-post-picture') %>')"></div>
+        <% end %>
+          <%#= image_tag("default-post-picture", crop:'fill', class:"post-card-picture") %>
+        <div class="post-card-details">
+          <h2><%= post.title %></h2>
+          <p class="post-card-summary"><%= post.summary %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

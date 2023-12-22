@@ -1,0 +1,70 @@
+<div class="post-container">
+  <div class="post-main-picture sticky d-flex align-items-center" style="background-image:url(<%= image_url('default-post-picture.png') %>);">
+    <%= link_to posts_path do %>
+      <i class="fa-solid fa-arrow-left return-btn"></i>
+    <% end %>
+  </div>
+
+  <div class="post-sections-container mt-3">
+    <ul class="nav nav-tabs post-sections" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="post-tab" data-bs-toggle="tab" data-bs-target="#post-tab-pane" type="button" role="tab" aria-controls="post-tab-pane" aria-selected="true">Article</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pictures-tab" data-bs-toggle="tab" data-bs-target="#pictures-tab-pane" type="button" role="tab" aria-controls="pictures-tab-pane" aria-selected="false">Photos</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="author-tab" data-bs-toggle="tab" data-bs-target="#author-tab-pane" type="button" role="tab" aria-controls="author-tab-pane" aria-selected="false">Auteur</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments-tab-pane" type="button" role="tab" aria-controls="comments-tab-pane" aria-selected="false">Commentaires</button>
+      </li>
+    </ul>
+
+    <div class="tab-content post-section-content" id="myTabContent">
+      <div class="tab-pane fade show active post-content-tab" id="post-tab-pane" role="tabpanel" aria-labelledby="post-tab" tabindex="0">
+        <h1 class="post-title"><%= @post.title %></h1>
+        <p class="post-details">Par <strong><%= @post.user.nickname&.capitalize %></strong> — le <%= @post.publication_date.strftime('%d/%m/%Y') %></p>
+        <p class="post-citation mt-4">"<%= @post.citation %>"</p>
+        <p class="post-content mt-4"><%= @post.content %></p>
+      </div>
+      <div class="tab-pane fade" id="pictures-tab-pane" role="tabpanel" aria-labelledby="pictures-tab" tabindex="1">
+        <div class="pictures-section">
+          <%= image_tag("default-post-picture.png", class:"post-pictures") %>
+          <%= image_tag("picture-1.png", class:"post-pictures") %>
+          <%= image_tag("picture-2.png", class:"post-pictures") %>
+          <%= image_tag("picture-3.png", class:"post-pictures") %>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="author-tab-pane" role="tabpanel" aria-labelledby="author-tab" tabindex="2">
+        <div class="author-profile">
+          <% if @author.photo.attached? %>
+            <%= cl_image_tag(@author.photo.key, class:'avatar-author-profile') %>
+          <% else %>
+            <%= image_tag('default-user-picture') %>
+          <% end %>
+          <h2 class="author-profile-name"><%= @author.nickname&.capitalize %></h2>
+        </div>
+        <div class="author-profile-summary">
+          <p><%= @author.description %></p>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="comments-tab-pane" role="tabpanel" aria-labelledby="comments-tab" tabindex="3">
+        <% @comments.each do |comment| %>
+          <div class="comment-container">
+            <p class="comment-content"><%= comment.content %></p>
+            <p class="comment-details"><strong><%= comment.user.nickname&.capitalize %></strong> — le 21/12/2023</p>
+          </div>
+        <% end %>
+
+        <div class="edit-comment mt-5">
+          <h2>Réagir à l'article</h2>
+          <%= simple_form_for @empty_comment, url: comments_path do |f| %>
+            <%= f.input :content, required: false, label: false, as: :text,  input_html: { style: 'min-height: 125px;', placeholder: 'Redigez votre commentaire...' } %>
+            <%= f.submit "Poster", class:'btn btn-secondary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+.navbar-lewagon {
+  justify-content: space-between;
+  background: none;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+}
+
+.navbar {
+  position: sticky;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+  padding: 15px 15px 15px 15px;
+}
+
+.logo {
+  font-family: "Amarante";
+  font-size: 28px;
+  margin: 0;
+}
+
+.navbar-item {
+  color: black;
+  font-size: 18px;
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+}
+

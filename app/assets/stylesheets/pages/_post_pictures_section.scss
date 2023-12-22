@@ -1,0 +1,11 @@
+.pictures-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.post-pictures {
+  width: 100%;
+  margin-bottom: 5%;
+  box-shadow: 0 0 5px $gray;
+  border-radius: 4px;
+}
